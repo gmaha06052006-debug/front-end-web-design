@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOD Panel - Test Results Analysis</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- --- Header / Navigation Bar --- -->
+    <header class="navbar-wrapper">
+        <div class="container navbar">
+            <!-- HOD Panel Logo -->
+            <a href="index.html" class="logo">
+                <div class="logo-icon">H</div>
+                <div class="logo-text">HOD<span>Panel</span></div>
+            </a>
+
+            <!-- Responsive Hamburger Toggle -->
+            <input type="checkbox" id="menu-toggle" class="menu-toggle-input">
+            <label for="menu-toggle" class="menu-toggle-label">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <!-- Nav Links -->
+            <nav class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a href="students.html">Students</a>
+                </li>
+                <li class="nav-item">
+                    <a href="events.html">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a href="results.html" class="active">Test Results</a>
+                </li>
+                <li class="nav-item">
+                    <a href="approvals.html">Approvals</a>
+                </li>
+            </nav>
+
+            <!-- Export Button -->
+            <button class="btn-export" id="btn-export-results">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Export Report
+            </button>
+        </div>
+    </header>
+
+    <!-- --- Main Container --- -->
+    <main class="container main-content">
+        <!-- Section Header -->
+        <section class="section-header">
+            <h1>Test Results Analysis</h1>
+            <p>Review grade distributions, average test scores, and student participation rates across active course timelines.</p>
+        </section>
+
+        <!-- --- Action Header with Duration Filters (CSS-Only Tabs) --- -->
+        <section class="action-header">
+            <!-- Segmented Control Filters -->
+            <div class="filter-tabs">
+                <input type="radio" name="duration" id="dur-1m" class="filter-tab-input" checked>
+                <label for="dur-1m" class="filter-tab-label">1 Month</label>
+                
+                <input type="radio" name="duration" id="dur-2m" class="filter-tab-input">
+                <label for="dur-2m" class="filter-tab-label">2 Months</label>
+                
+                <input type="radio" name="duration" id="dur-3m" class="filter-tab-input">
+                <label for="dur-3m" class="filter-tab-label">3 Months</label>
+                
+                <input type="radio" name="duration" id="dur-6m" class="filter-tab-input">
+                <label for="dur-6m" class="filter-tab-label">6 Months</label>
+            </div>
+
+            <!-- Download Button -->
+            <div class="action-buttons">
+                <button class="btn-primary" id="btn-download-grades">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Download Grade Sheet
+                </button>
+            </div>
+        </section>
+
+        <!-- --- Statistics Cards Grid --- -->
+        <section class="card-grid">
+            <!-- Total Tests -->
+            <div class="glass-card card-purple" id="stat-total-tests">
+                <div class="card-content">
+                    <div class="card-header">
+                        <span class="card-title">Total Tests</span>
+                        <div class="card-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                        </div>
+                    </div>
+                    <div class="card-value" id="val-total-tests">24</div>
+                    <div class="card-meta">
+                        <span class="trend-up">6 CSE courses</span> active
+                    </div>
+                </div>
+            </div>
+
+            <!-- Completed Tests -->
+            <div class="glass-card card-green" id="stat-completed-tests">
+                <div class="card-content">
+                    <div class="card-header">
+                        <span class="card-title">Completed</span>
+                        <div class="card-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                    </div>
+                    <div class="card-value" id="val-completed-tests">18</div>
+                    <div class="card-meta">
+                        <span class="trend-up">+3 scheduled</span> next week
+                    </div>
+                </div>
+            </div>
+
+            <!-- Average Completion -->
+            <div class="glass-card card-blue" id="stat-avg-completion">
+                <div class="card-content">
+                    <div class="card-header">
+                        <span class="card-title">Average Completion</span>
+                        <div class="card-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                    </div>
+                    <div class="card-value" id="val-avg-completion">85.4%</div>
+                    <div class="card-meta">
+                        Target completion <span class="trend-up">90%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sections -->
+            <div class="glass-card card-pink" id="stat-test-sections">
+                <div class="card-content">
+                    <div class="card-header">
+                        <span class="card-title">Active Sections</span>
+                        <div class="card-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+                        </div>
+                    </div>
+                    <div class="card-value" id="val-sections">6</div>
+                    <div class="card-meta">
+                        Sections A, B, C, D, E, F
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- --- Test Results Table --- -->
+        <section class="table-responsive-wrapper">
+            <table class="premium-table" id="results-table">
+                <thead>
+                    <tr>
+                        <th>Test Name</th>
+                        <th>Pass Rate</th>
+                        <th>Avg Marks</th>
+                        <th>Duration</th>
+                        <th>Students Registered</th>
+                        <th style="width: 240px;">Completion Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Row 1 -->
+                    <tr>
+                        <td class="td-bold-white">Data Structures Mid-Term</td>
+                        <td class="td-bold-white" style="color: var(--accent-green) !important;">91.2%</td>
+                        <td>78 / 100</td>
+                        <td>2.0 Hours</td>
+                        <td>118 Students</td>
+                        <td>
+                            <div class="event-card-progress-wrapper" style="margin-top: 4px;">
+                                <div class="progress-info" style="font-size: 0.8rem;">
+                                    <span>Finished</span>
+                                    <span>100%</span>
+                                </div>
+                                <div class="progress-bar-container" style="height: 5px;">
+                                    <div class="progress-bar-fill green-grad" style="width: 100%;"></div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- Row 2 -->
+                    <tr>
+                        <td class="td-bold-white">Database Systems Quiz 2</td>
+                        <td class="td-bold-white" style="color: var(--accent-green) !important;">88.5%</td>
+                        <td>18 / 20</td>
+                        <td>45 Mins</td>
+                        <td>124 Students</td>
+                        <td>
+                            <div class="event-card-progress-wrapper" style="margin-top: 4px;">
+                                <div class="progress-info" style="font-size: 0.8rem;">
+                                    <span>Finished</span>
+                                    <span>100%</span>
+                                </div>
+                                <div class="progress-bar-container" style="height: 5px;">
+                                    <div class="progress-bar-fill green-grad" style="width: 100%;"></div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- Row 3 (At Risk Pass Rate) -->
+                    <tr>
+                        <td class="td-bold-white">Operating Systems Evaluation</td>
+                        <td class="td-bold-white" style="color: var(--accent-pink) !important;">74.8%</td>
+                        <td>38 / 50</td>
+                        <td>3.0 Hours</td>
+                        <td>115 Students</td>
+                        <td>
+                            <div class="event-card-progress-wrapper" style="margin-top: 4px;">
+                                <div class="progress-info" style="font-size: 0.8rem;">
+                                    <span>Evaluating</span>
+                                    <span>75%</span>
+                                </div>
+                                <div class="progress-bar-container" style="height: 5px;">
+                                    <div class="progress-bar-fill" style="width: 75%;"></div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- Row 4 -->
+                    <tr>
+                        <td class="td-bold-white">Introduction to AI Assessment</td>
+                        <td class="td-bold-white" style="color: var(--accent-green) !important;">96.0%</td>
+                        <td>84 / 100</td>
+                        <td>1.5 Hours</td>
+                        <td>122 Students</td>
+                        <td>
+                            <div class="event-card-progress-wrapper" style="margin-top: 4px;">
+                                <div class="progress-info" style="font-size: 0.8rem;">
+                                    <span>Finished</span>
+                                    <span>100%</span>
+                                </div>
+                                <div class="progress-bar-container" style="height: 5px;">
+                                    <div class="progress-bar-fill green-grad" style="width: 100%;"></div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- Row 5 (Not yet started / scheduled) -->
+                    <tr>
+                        <td class="td-bold-white">Web Technologies Lab Exam</td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>2.0 Hours</td>
+                        <td>120 Students</td>
+                        <td>
+                            <div class="event-card-progress-wrapper" style="margin-top: 4px;">
+                                <div class="progress-info" style="font-size: 0.8rem; color: var(--text-muted);">
+                                    <span>Not Started</span>
+                                    <span>0%</span>
+                                </div>
+                                <div class="progress-bar-container" style="height: 5px;">
+                                    <div class="progress-bar-fill pink-grad" style="width: 0%;"></div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="app.js" defer></script>
+</body>
+</html>

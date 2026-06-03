@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOD Panel - College Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- --- Header / Navigation Bar --- -->
+    <header class="navbar-wrapper">
+        <div class="container navbar">
+            <!-- HOD Panel Logo -->
+            <a href="index.html" class="logo">
+                <div class="logo-icon">H</div>
+                <div class="logo-text">HOD<span>Panel</span></div>
+            </a>
+
+            <!-- Responsive Hamburger Toggle -->
+            <input type="checkbox" id="menu-toggle" class="menu-toggle-input">
+            <label for="menu-toggle" class="menu-toggle-label">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <!-- Nav Links -->
+            <nav class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="active">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a href="students.html">Students</a>
+                </li>
+                <li class="nav-item">
+                    <a href="events.html">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a href="results.html">Test Results</a>
+                </li>
+                <li class="nav-item">
+                    <a href="approvals.html">Approvals</a>
+                </li>
+            </nav>
+
+            <!-- Export Button (Hidden on small viewports via CSS) -->
+            <button class="btn-export" id="btn-export-main">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Export Report
+            </button>
+        </div>
+    </header>
+
+    <!-- --- Main Dashboard Container --- -->
+    <main class="container main-content">
+        <!-- Section Header -->
+        <section class="section-header">
+            <h1>Department Dashboard</h1>
+            <p>Overview of Computer Science & Engineering department statistics and critical indicators.</p>
+        </section>
+
+        <!-- --- Statistics Cards Grid --- -->
+        <section class="card-grid">
+            <!-- Total Students -->
+            <div class="glass-card card-purple" id="stat-total-students">
+                <div class="card-content">
+                    <div class="card-header">
+                        <span class="card-title">Total Students</span>
+                        <div class="card-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                    </div>
+                    <div class="card-value">1,248</div>
+                    <div class="card-meta">
+                        <span class="trend-up">Active</span> CSE Dept
+                    </div>
+                </div>
+            </div>
+
+            <!-- Average Attendance -->
+            <div class="glass-card card-green" id="stat-avg-attendance">
+                <div class="card-content">
+                    <div class="card-header">
+                        <span class="card-title">Average Attendance</span>
+                        <div class="card-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        </div>
+                    </div>
+                    <div class="card-value">88.5%</div>
+                    <div class="card-meta">
+                        <span class="trend-up">+1.4%</span> since last month
+                    </div>
+                </div>
+            </div>
+
+            <!-- At Risk Students -->
+            <div class="glass-card card-blue" id="stat-risk-students">
+                <div class="card-content">
+                    <div class="card-header">
+                        <span class="card-title">At Risk Students</span>
+                        <div class="card-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        </div>
+                    </div>
+                    <div class="card-value">42</div>
+                    <div class="card-meta">
+                        <span class="trend-down">-5</span> improved status
+                    </div>
+                </div>
+            </div>
+
+            <!-- Critical Students -->
+            <div class="glass-card card-pink card-critical-pulse" id="stat-critical-students">
+                <div class="card-content">
+                    <div class="card-header">
+                        <span class="card-title">Critical Students</span>
+                        <div class="card-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        </div>
+                    </div>
+                    <div class="card-value">15</div>
+                    <div class="card-meta">
+                        <span class="trend-down" style="color: var(--accent-pink);">Immediate Action</span> required
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Charts and notes -->
+        <section class="dashboard-details-grid">
+            <!-- Attendance Risk Distribution (SVG Circle Chart) -->
+            <div class="glass-card" id="card-attendance-risk">
+                <h3 class="section-card-title">Attendance Risk</h3>
+                <div class="chart-content" style="gap: 20px;">
+                    <!-- Circular Gauge -->
+                    <div class="circle-chart-wrapper">
+                        <svg viewBox="0 0 36 36" class="circle-chart-svg">
+                            <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <!-- Outer segments overlapping each other -->
+                            <!-- Success segment (85%) -->
+                            <path class="circle-progress progress-purple" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <!-- Risk segment (starts at offset, length 15%) -->
+                            <path class="circle-progress progress-blue" stroke-dashoffset="-68" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <!-- Critical segment (starts at offset, length 7%) -->
+                            <path class="circle-progress progress-pink" stroke-dashoffset="-86" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        </svg>
+                        <div class="circle-chart-info">
+                            <div class="circle-chart-number">88.5%</div>
+                            <div class="circle-chart-label">Avg Attendance</div>
+                        </div>
+                    </div>
+
+                    <!-- Chart Legend -->
+                    <div class="circle-chart-legend">
+                        <div class="legend-item">
+                            <span class="legend-color legend-purple"></span>
+                            <div>
+                                <div>Low Risk (85%)</div>
+                            </div>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color legend-blue"></span>
+                            <div>
+                                <div>At Risk (10%)</div>
+                            </div>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color legend-pink"></span>
+                            <div>
+                                <div>Critical (5%)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subject Average Attendance (Vertical CSS Bars) -->
+            <div class="glass-card" id="card-subject-attendance">
+                <h3 class="section-card-title">Subject Attendance</h3>
+                <div class="chart-content">
+                    <div class="bar-chart-vertical">
+                        <!-- Bar 1 -->
+                        <div class="vertical-bar-container">
+                            <div class="bar-wrapper">
+                                <div class="bar-fill bar-fill-high" style="height: 92%;"></div>
+                                <span class="bar-value-tooltip">92%</span>
+                            </div>
+                            <span class="bar-label">Web Dev</span>
+                        </div>
+                        <!-- Bar 2 -->
+                        <div class="vertical-bar-container">
+                            <div class="bar-wrapper">
+                                <div class="bar-fill" style="height: 88%;"></div>
+                                <span class="bar-value-tooltip">88%</span>
+                            </div>
+                            <span class="bar-label">DBMS</span>
+                        </div>
+                        <!-- Bar 3 -->
+                        <div class="vertical-bar-container">
+                            <div class="bar-wrapper">
+                                <div class="bar-fill bar-fill-warning" style="height: 79%;"></div>
+                                <span class="bar-value-tooltip">79%</span>
+                            </div>
+                            <span class="bar-label">OS</span>
+                        </div>
+                        <!-- Bar 4 -->
+                        <div class="vertical-bar-container">
+                            <div class="bar-wrapper">
+                                <div class="bar-fill" style="height: 85%;"></div>
+                                <span class="bar-value-tooltip">85%</span>
+                            </div>
+                            <span class="bar-label">DS</span>
+                        </div>
+                        <!-- Bar 5 -->
+                        <div class="vertical-bar-container">
+                            <div class="bar-wrapper">
+                                <div class="bar-fill bar-fill-high" style="height: 94%;"></div>
+                                <span class="bar-value-tooltip">94%</span>
+                            </div>
+                            <span class="bar-label">AI/ML</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Department notes -->
+            <div class="glass-card wide-column" id="card-ai-summary">
+                <h3 class="section-card-title">
+                    Department Notes
+                    <span class="title-badge badge-ai">CSE</span>
+                </h3>
+                <div class="ai-summary-container">
+                    <p class="ai-intro">
+                        Quick notes from this month's attendance and test data.
+                    </p>
+                    <div class="ai-insight-list">
+                        <div class="ai-insight-item insight-success">
+                            <div>
+                                <strong>Good:</strong> Overall CSE attendance increased by <strong>1.4%</strong> since last month.
+                            </div>
+                        </div>
+                        <div class="ai-insight-item insight-warning">
+                            <div>
+                                <strong>Needs attention:</strong> Operating Systems attendance is low at <strong>79%</strong>. Please check the 15 critical students.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js" defer></script>
+</body>
+</html>
